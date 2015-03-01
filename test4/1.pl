@@ -4,4 +4,4 @@ grammar G {
 class A {
     method TOP($/) {say ~$/}
 }
-G.parse("42", :actions(A.new()));
+G.parse("42", :actions(A));
