@@ -90,7 +90,7 @@ class CalcActions {
     }
 }
 
-my $calc = Calc.subparse(@*ARGS[0], :actions(CalcActions.new()));
+my $calc = Calc.subparse(@*ARGS[0], :actions(CalcActions));
 say $calc.ast;
 #say $calc;
 #say $calc.perl;
