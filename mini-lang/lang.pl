@@ -1,5 +1,3 @@
-my %var;
-
 grammar Lang {
     rule TOP {
         ^ <statements> $
@@ -30,15 +28,17 @@ grammar Lang {
 }
 
 class LangActions {
+    has %var;
+
     method assignment($/) {
-        %var{$/<identifier>} = $<expression>.made;
+        %!var{$/<identifier>} = $<expression>.made;
     }
     method printout($/) {
         say $<expression>.ast;
     }
     method expression($/) {
         if $<identifier> {
-            $/.make(%var{$<identifier>} // 0);
+            $/.make(%!var{$<identifier>} // 0);
         }
         else {
             $/.make(+$<value>);
