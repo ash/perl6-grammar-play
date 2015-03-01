@@ -22,7 +22,7 @@ grammar Calc {
     }
 }
 
-class GrammarAction {
+class CalcActions {
     method TOP($/) {
         $/.make: $<expression>.ast
     }
@@ -90,7 +90,7 @@ class GrammarAction {
     }
 }
 
-my $calc = Calc.subparse(@*ARGS[0], :actions(GrammarAction.new()));
+my $calc = Calc.subparse(@*ARGS[0], :actions(CalcActions.new()));
 say $calc.ast;
 #say $calc;
 #say $calc.perl;
