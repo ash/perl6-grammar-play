@@ -3,11 +3,11 @@ grammar Calc {
         ^ <expression> $
     }
     rule expression {
-        | <term> [$<op>=(['+'|'-']) <term>]*
+        | <term>+ %% $<op>=(['+'|'-'])
         | <group>
     }
     rule term {
-        <factor> [$<op>=(['*'|'/']) <factor>]*
+        <factor>+  %% $<op>=(['*'|'/'])
     }
     rule factor {
         | <value>
